@@ -48,6 +48,11 @@ public class Ball : MonoBehaviour
 				GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().NextLevel();
 			}	
         }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().ReloadLevel();
+		}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
