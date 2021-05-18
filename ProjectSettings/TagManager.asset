@@ -8,6 +8,8 @@ TagManager:
   - ui
   - finalTimer
   - finalShots
+  - Pic
+  - saw
   layers:
   - Default
   - TransparentFX

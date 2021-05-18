@@ -23,7 +23,16 @@ public class Ball : MonoBehaviour
 	public void Push (Vector2 force)
 	{
 		rb.AddForce (force, ForceMode2D.Impulse);
-		GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().AddTry();
+		this.AddTry();
+		
+	}
+
+	public void AddTry()
+    {
+		if (GameObject.FindGameObjectWithTag("ui") != null)
+		{
+			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().AddTry();
+		}
 	}
 
 	public void ActivateRb ()
@@ -49,7 +58,7 @@ public class Ball : MonoBehaviour
 			}	
         }
 
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
 			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().ReloadLevel();
 		}
@@ -67,7 +76,13 @@ public class Ball : MonoBehaviour
         {
 			this.InCup = true;
         }
-    }
+
+		if (collision.gameObject.tag == "Pic")
+		{
+			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().ReloadLevel();
+		}
+
+	}
 
     private void OnCollisionExit2D(Collision2D collision)
     {
