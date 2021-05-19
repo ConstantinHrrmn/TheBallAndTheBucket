@@ -152,6 +152,11 @@ public class ui : MonoBehaviour
         {
             SceneManager.LoadScene("End");
         }
+
+        else if(this.actualLevel < 0){
+            SceneManager.LoadScene("MainMenu");
+        }
+
         else
         {
             SceneManager.LoadScene(this.levels[this.actualLevel]);

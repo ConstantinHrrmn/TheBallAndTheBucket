@@ -10,6 +10,9 @@ TagManager:
   - finalShots
   - Pic
   - saw
+  - speed
+  - portal_in
+  - portal_out
   layers:
   - Default
   - TransparentFX

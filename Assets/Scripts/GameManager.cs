@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
 
 	public Ball ball;
 	public Trajectory trajectory;
+	[SerializeField] float basePushForce = 4f;
 	[SerializeField] float pushForce = 4f;
+	
 
 	bool isDragging = false;
 
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
 	{
-		Debug.Log(this.ball.gameObject.GetComponent<Ball>().touchGround);
+		//Debug.Log(this.ball.gameObject.GetComponent<Ball>().touchGround);
 
         if (this.ball.gameObject.GetComponent<Ball>().touchGround)
         {
@@ -87,11 +89,19 @@ public class GameManager : MonoBehaviour
 
 	void OnDragEnd ()
 	{
+
+		this.pushForce = this.basePushForce;
+
 		ball.ActivateRb ();
 
 		ball.Push (force);
 
 		trajectory.Hide ();
 	}
+
+	public void SpeedUp()
+    {
+		this.pushForce = 15f;
+    }
 
 }

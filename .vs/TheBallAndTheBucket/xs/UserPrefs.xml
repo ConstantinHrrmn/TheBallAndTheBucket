@@ -1,10 +1,13 @@
 ﻿<Properties StartupConfiguration="{E5E6F6C2-9E64-5EBF-F4E2-725A01341533}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Portals/portalOutManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Ball.cs" Line="84" Column="20" />
-      <File FileName="Assets/Scripts/ui.cs" Line="64" Column="68" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="42" Column="43" />
+      <File FileName="Assets/Scripts/Ball.cs" Line="72" Column="1" />
+      <File FileName="Assets/Scripts/ui.cs" Line="152" Column="10" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="104" Column="24" />
       <File FileName="Assets/Scripts/Cup.cs" Line="1" Column="1" />
+      <File FileName="Assets/PortalManager.cs" Line="26" Column="79" />
+      <File FileName="Assets/Scripts/Portals/portalInManager.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Portals/portalOutManager.cs" Line="26" Column="69" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +15,14 @@
           <Node name="TheBallAndTheBucket" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="GameManager.cs" selected="True" />
+                <Node name="Portals" expanded="True">
+                  <Node name="portalOutManager.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="TextMesh Pro" expanded="True">
+                <Node name="Examples &amp; Extras" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
               </Node>
             </Node>
           </Node>

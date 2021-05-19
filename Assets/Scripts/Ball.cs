@@ -71,16 +71,27 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Respawn" || collision.gameObject.tag == "Pic")
+		string s = collision.gameObject.tag;
+
+
+		if (s == "Respawn" || s == "Pic")
         {
 			Instantiate(blood, new Vector3(this.transform.position.x, this.transform.position.y, 0), new Quaternion());
 			this.DesactivateRb();
 			this.transform.position = this.spawn;
 			this.touchGround = true;
         }
-		else if (collision.gameObject.tag == "cup")
+		else if (s == "cup")
         {
 			this.InCup = true;
+        }
+        else if (s == "speed")
+        {
+			GameObject.Find("GameManager").GetComponent<GameManager>().SpeedUp();
+		}
+		else if (s == "portalin")
+        {
+			Debug.Log("Touch portal IN");
         }
         else
         {
