@@ -13,6 +13,9 @@ TagManager:
   - speed
   - portal_in
   - portal_out
+  - slow
+  - rotation
+  - gravity
   layers:
   - Default
   - TransparentFX

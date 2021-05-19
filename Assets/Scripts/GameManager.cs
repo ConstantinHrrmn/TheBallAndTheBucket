@@ -104,4 +104,9 @@ public class GameManager : MonoBehaviour
 		this.pushForce = 15f;
     }
 
+	public void SlowDown()
+	{
+		this.pushForce = 1f;
+	}
+
 }

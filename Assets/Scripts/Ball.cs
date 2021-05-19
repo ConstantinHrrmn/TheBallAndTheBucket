@@ -89,11 +89,19 @@ public class Ball : MonoBehaviour
         {
 			GameObject.Find("GameManager").GetComponent<GameManager>().SpeedUp();
 		}
-		else if (s == "portalin")
+		else if (s == "slow")
+		{
+			GameObject.Find("GameManager").GetComponent<GameManager>().SlowDown();
+		}
+		else if (s == "rotation")
         {
-			Debug.Log("Touch portal IN");
-        }
-        else
+			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().ChangeRotation();
+		}
+		else if (s == "gravity")
+		{
+			this.gameObject.GetComponent<Rigidbody2D>().gravityScale *= -1;
+		}
+		else
         {
 			this.touchGround = true;
         }

@@ -449,6 +449,7 @@ MonoBehaviour:
   lblTime: {fileID: 2129986355440466580}
   lblPause: {fileID: 1177285989}
   LevelAmount: 2
+  cameraRotationSpeed: 90
 --- !u!1 &2129986356901229161
 GameObject:
   m_ObjectHideFlags: 0

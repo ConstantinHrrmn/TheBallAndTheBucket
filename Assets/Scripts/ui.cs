@@ -16,12 +16,18 @@ public class ui : MonoBehaviour
     public GameObject lblPause;
 
     private GameObject gamebase;
+    private GameObject camera;
 
     public int LevelAmount;
     private int actualLevel;
+    private int maxRotationCamera = 180;
+    private float actualCameraRotation = 0;
+    public float cameraRotationSpeed; 
 
     private bool inGame = false;
     private bool End = false;
+    private bool upsideDown = false;
+    private bool turningCamera = false;
 
     private List<string> levels = new List<string>();
 
@@ -45,6 +51,8 @@ public class ui : MonoBehaviour
         this.ResetValues();
         this.EndGame();
         this.RandomizeLevels();
+
+        this.camera = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -77,6 +85,25 @@ public class ui : MonoBehaviour
         {
             this.Pause();
             this.gamebase.SetActive(!this.gamebase.activeSelf);
+        }
+
+        if (this.turningCamera)
+        {
+            this.actualCameraRotation += this.cameraRotationSpeed * Time.deltaTime;
+            Debug.Log(this.actualCameraRotation);
+
+            if (this.actualCameraRotation > this.maxRotationCamera)
+            {
+                Debug.Log("MAX ROTATION");
+                this.camera.transform.rotation = new Quaternion(0, 0, (this.upsideDown ? 0: 180), 0);
+                this.upsideDown = !this.upsideDown;
+                this.turningCamera = false;
+                this.actualCameraRotation = 0;
+            }
+            else
+            {
+                this.camera.transform.Rotate(new Vector3(0, 0, this.cameraRotationSpeed * Time.deltaTime));
+            }
         }
     }
 
@@ -163,6 +190,11 @@ public class ui : MonoBehaviour
         }
         
         this.trys += 5;
+    }
+
+    public void ChangeRotation()
+    {
+        this.turningCamera = !this.turningCamera;
     }
 
 }
