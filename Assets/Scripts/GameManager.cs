@@ -39,18 +39,31 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown (0)) {
-			isDragging = true;
-			OnDragStart ();
-		}
-		if (Input.GetMouseButtonUp (0)) {
-			isDragging = false;
-			OnDragEnd ();
-		}
+		Debug.Log(this.ball.gameObject.GetComponent<Ball>().touchGround);
 
-		if (isDragging) {
-			OnDrag ();
+        if (this.ball.gameObject.GetComponent<Ball>().touchGround)
+        {
+			if (Input.GetMouseButtonDown(0))
+			{
+				isDragging = true;
+				OnDragStart();
+			}
+			if (Input.GetMouseButtonUp(0))
+			{
+				isDragging = false;
+				OnDragEnd();
+				this.ball.gameObject.GetComponent<Ball>().touchGround = false;
+				
+			}
+
+			if (isDragging)
+			{
+				
+				OnDrag();
+
+			}
 		}
+		
 	}
 
 	//-Drag--------------------------------------

@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class ui : MonoBehaviour
 {
 
-    public int trys;
-    public float time;
+    [HideInInspector] public int trys;
+    [HideInInspector] public float time;
 
     public GameObject lblTrys;
     public GameObject lblTime;

@@ -135,3 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   col: {fileID: 0}
+  blood: {fileID: 4471623378702912743, guid: 1409e71e09d784f52a529f818326805f, type: 3}
