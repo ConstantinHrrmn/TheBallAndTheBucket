@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 	{
 		//Debug.Log(this.ball.gameObject.GetComponent<Ball>().touchGround);
 
-        if (this.ball.gameObject.GetComponent<Ball>().touchGround)
+		if (this.ball.gameObject.GetComponent<Ball>().touchGround)
         {
 			if (Input.GetMouseButtonDown(0))
 			{
@@ -75,6 +75,12 @@ public class GameManager : MonoBehaviour
 		startPoint = cam.ScreenToWorldPoint (Input.mousePosition);
 
 		trajectory.Show ();
+	}
+
+	public void NewLevel()
+    {
+		this.cam = Camera.main;
+		
 	}
 
 	void OnDrag ()

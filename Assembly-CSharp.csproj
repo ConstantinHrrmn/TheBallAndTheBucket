@@ -66,13 +66,16 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\Scripts\Cup.cs" />
+    <Compile Include="Assets\Scripts\DeletableWallManager.cs" />
     <Compile Include="Assets\Scripts\EndGame.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Portals\PortalManager.cs" />
     <Compile Include="Assets\Scripts\Portals\portalInManager.cs" />
     <Compile Include="Assets\Scripts\Portals\portalOutManager.cs" />
     <Compile Include="Assets\Scripts\Trajectory.cs" />
+    <Compile Include="Assets\Scripts\cupLevelManager.cs" />
     <Compile Include="Assets\Scripts\rail.cs" />
+    <Compile Include="Assets\Scripts\rainbow.cs" />
     <Compile Include="Assets\Scripts\ui.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

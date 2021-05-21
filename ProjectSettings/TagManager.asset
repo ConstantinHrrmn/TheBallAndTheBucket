@@ -16,6 +16,10 @@ TagManager:
   - slow
   - rotation
   - gravity
+  - cupgravity
+  - star
+  - cupLevel
+  - cupHome
   layers:
   - Default
   - TransparentFX
@@ -52,4 +56,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3109687493
     locked: 0
