@@ -35,6 +35,7 @@ public class Ball : MonoBehaviour
 	{
 		rb.AddForce (force, ForceMode2D.Impulse);
 		this.AddTry();
+		this.ChangeColor(this.BaseColor);
 		
 	}
 
@@ -152,6 +153,7 @@ public class Ball : MonoBehaviour
 		else if(s == "star")
         {
 			this.ChangeColor(c);
+			this.touchGround = true;
 			GameObject.Find("Deletable Walls").GetComponent<DeletableWallManager>().Activate();
 		}
 		else if(s == "portal_in" || s == "portal_out")
@@ -161,7 +163,9 @@ public class Ball : MonoBehaviour
 		else
         {
 			this.touchGround = true;
-        }
+		}
+
+		
 	}
 
     private void OnCollisionExit2D(Collision2D collision)

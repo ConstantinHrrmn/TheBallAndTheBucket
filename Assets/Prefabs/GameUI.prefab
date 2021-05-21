@@ -684,7 +684,7 @@ MonoBehaviour:
   lblPause: {fileID: 1177285989}
   HomeBucket: {fileID: 1550103792014661414}
   camera: {fileID: 4106357684261262005}
-  LevelAmount: 3
+  LevelAmount: 5
   TutorielAmount: 6
   cameraRotationSpeed: 90
 --- !u!1 &2129986356901229161

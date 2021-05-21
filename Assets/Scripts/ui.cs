@@ -72,6 +72,8 @@ public class ui : MonoBehaviour
 
     void InstantiateLevels()
     {
+        this.levels.Clear();
+
         for (int i = 0; i < this.LevelAmount; i++)
             this.levels.Add("level" + i);
 
@@ -80,6 +82,8 @@ public class ui : MonoBehaviour
 
     void InstantiateTutoriels()
     {
+        this.tutoriels.Clear();
+
         for (int i = 0; i < this.TutorielAmount; i++)
             this.tutoriels.Add("tutorial" + i);
 
@@ -246,7 +250,9 @@ public class ui : MonoBehaviour
                 this.EndGame();
                 this.End = false;
             }
-                
+            this.InstantiateLevels();
+            this.InstantiateTutoriels();
+
         }
         else
         {
