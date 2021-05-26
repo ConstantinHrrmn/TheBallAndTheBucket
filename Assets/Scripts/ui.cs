@@ -11,21 +11,27 @@ public class ui : MonoBehaviour
     [HideInInspector] public int trys;
     [HideInInspector] public float time;
 
+    #region Public variables
     public GameObject lblTrys;
     public GameObject lblTime;
     public GameObject lblPause;
     public GameObject HomeBucket;
 
-    private GameObject gamebase;
-    public GameObject camera;
-
     public int LevelAmount;
     public int TutorielAmount;
+    public float cameraRotationSpeed;
+
+    public GameObject camera;
+    public static ui i;
+    #endregion
+
+    #region Private variables
+    private GameObject gamebase;
     private int actualLevel;
 
     private int maxRotationCamera = 180;
     private float actualCameraRotation = 0;
-    public float cameraRotationSpeed;
+    
 
     private bool inGame = false;
     private bool End = false;
@@ -45,11 +51,15 @@ public class ui : MonoBehaviour
     private int EndCode = 10002;
     private int TutorielCode = 10003;
 
-    public static ui i;
+    #endregion
+    
 
-
+    /// <summary>
+    /// Ce produit une fois au moment du démarrage
+    /// </summary>
     void Awake()
     {
+        // On vérifie si l'objet à déjà été instancié ou non
         if (!i)
         {
             i = this;
@@ -59,6 +69,7 @@ public class ui : MonoBehaviour
             Destroy(gameObject);
 
 
+        // Gestion des menus et affichages divers
         this.lblPause.SetActive(false);
         this.HomeBucket.SetActive(false);
 
@@ -67,19 +78,27 @@ public class ui : MonoBehaviour
         this.SpecialCodes.Add(this.EndCode, "End");
         this.SpecialCodes.Add(this.TutorielCode, "Tutoriel");
 
+        // Création d'un random
         this.rnd = new System.Random();
     }
 
+    /// <summary>
+    /// Instantation des niveaux à charger dans la liste
+    /// </summary>
     void InstantiateLevels()
     {
-        this.levels.Clear();
+        this.levels.Clear();    // On vide la liste
 
         for (int i = 0; i < this.LevelAmount; i++)
             this.levels.Add("level" + i);
 
-        this.DebugLevelList();
+        // Afin de debugger pour vérifier les niveau ajoutés
+        //this.DebugLevelList();
     }
 
+    /// <summary>
+    /// Instancie les niveaux de tutoriel
+    /// </summary>
     void InstantiateTutoriels()
     {
         this.tutoriels.Clear();
@@ -87,23 +106,33 @@ public class ui : MonoBehaviour
         for (int i = 0; i < this.TutorielAmount; i++)
             this.tutoriels.Add("tutorial" + i);
 
-        this.DebugTutorialList();
+        //this.DebugTutorialList();
     }
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start avant le début du premier update
+    /// </summary>
     void Start()
     {
-        this.ResetValues();
-        this.EndGame();
-        this.InstantiateLevels();
-        this.InstantiateTutoriels();
+        this.ResetValues();             // Remise à zéro des valeurs
+        this.EndGame();                 // On met tous les paramètres de fin de jeu à 0
+        this.InstantiateLevels();       // On charge les niveaux dans la liste
+        this.InstantiateTutoriels();    // On charge les niveaux de tutoriels dans la liste
 
+        // Le niveau actuel coresspond au niveau du code
         this.actualLevel = this.LevelSelectorCode;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Appeler à chaque frame
+    /// </summary>
     void Update()
     {
+        // On cherche une base de jeu si on en a pas 
+        if (GameObject.Find("GameBase") != null)
+            this.gamebase = GameObject.Find("GameBase");
+
+        #region Game update
         // Est-ce que le jeu est en cours ou non
         if (this.inGame)
         {
@@ -114,21 +143,27 @@ public class ui : MonoBehaviour
             float minutes = Mathf.Floor(this.time / 60);
             float seconds = Mathf.RoundToInt(this.time % 60);
 
-
+            // Met à jour les labels avec les données du jeu
             this.lblTrys.gameObject.GetComponent<TextMeshProUGUI>().text = "Shots : " + this.trys;
             this.lblTime.gameObject.GetComponent<TextMeshProUGUI>().text = minutes.ToString("00") + " : " + seconds.ToString("00");
         }
+        // Si le jeu n'est plus en cours
         else if (this.End)
         {
-            GameObject.FindGameObjectWithTag("finalTimer").GetComponent<TextMeshProUGUI>().text = "TIME : " + this.time;
+            // On créer les variables de minutes et secondes pour les afficher en haut de l'écran
+            float minutes = Mathf.Floor(this.time / 60);
+            float seconds = Mathf.RoundToInt(this.time % 60);
+
+            // Affichages des données finales dans les labels 
+            GameObject.FindGameObjectWithTag("finalTimer").GetComponent<TextMeshProUGUI>().text = "TIME : " + minutes.ToString("00") + " : " + seconds.ToString("00");
             GameObject.FindGameObjectWithTag("finalShots").GetComponent<TextMeshProUGUI>().text = "SHOTS : " + this.trys;
         }
+        #endregion
 
-        if (GameObject.Find("GameBase") != null)
-            this.gamebase = GameObject.Find("GameBase");
-
+        #region Key Inputs
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            // Met le jeu en pause
             this.Pause();
             this.gamebase.SetActive(!this.gamebase.activeSelf);
         }
@@ -137,23 +172,33 @@ public class ui : MonoBehaviour
         {
             this.NextLevel();
         }
+        #endregion
 
+        #region Caméra rotation
+        // Tourne la camera si le boolean est enclenché
         if (this.turningCamera)
         {
+            // On ajoute une rotation à l'angle de la caméra
             this.actualCameraRotation += this.cameraRotationSpeed * Time.deltaTime;
 
+            // Vérififcation dans l'angle de la caméra par rapport à l'angle max
             if (this.actualCameraRotation > this.maxRotationCamera)
             {
+                // Bloquage de la rotation à 0 ou 180 degérs
                 this.camera.transform.rotation = new Quaternion(0, 0, (this.upsideDown ? 0 : 180), 0);
+
+                // Remise à zéro des valeurs de rotation
                 this.upsideDown = !this.upsideDown;
                 this.turningCamera = false;
                 this.actualCameraRotation = 0;
             }
             else
             {
+                // Tourner la caméra
                 this.camera.transform.Rotate(new Vector3(0, 0, this.cameraRotationSpeed * Time.deltaTime));
             }
         }
+        #endregion
     }
 
     /// <summary>
@@ -211,6 +256,9 @@ public class ui : MonoBehaviour
         this.End = false;
     }
 
+    /// <summary>
+    /// Active les labels du jeu
+    /// </summary>
     public void ActivateGameLabels()
     {
         this.lblTrys.SetActive(true);
@@ -231,14 +279,16 @@ public class ui : MonoBehaviour
     /// </summary>
     public void NextLevel()
     {
+        // La variable qui va charger le niveau 
         string levelName = "";
 
-        
-
+        // Vérification pour voir si le code est dans la liste des codes spéciaux
         if (this.SpecialCodes.ContainsKey(this.actualLevel))
         {
+            // Assignation du nom de niveau en fonction du code
             levelName = this.SpecialCodes[this.actualLevel];
 
+            // Si le niveau actuel correspond au menu principal
             if (this.actualLevel == this.MainMenuCode)
             {
                 this.EndGame();
@@ -250,6 +300,8 @@ public class ui : MonoBehaviour
                 this.EndGame();
                 this.End = false;
             }
+
+            // Remise à 0 de la liste des niveaux et tutoriels 
             this.InstantiateLevels();
             this.InstantiateTutoriels();
 
@@ -332,7 +384,6 @@ public class ui : MonoBehaviour
     {
         this.turningCamera = !this.turningCamera;
     }
-
 
     public void SelectGameMode(int code, int amount)
     {

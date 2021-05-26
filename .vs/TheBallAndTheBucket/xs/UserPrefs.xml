@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{E5E6F6C2-9E64-5EBF-F4E2-725A01341533}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Portals/portalOutManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/rail.cs">
     <Files>
-      <File FileName="Assets/Scripts/Ball.cs" Line="72" Column="1" />
-      <File FileName="Assets/Scripts/ui.cs" Line="152" Column="10" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="104" Column="24" />
-      <File FileName="Assets/Scripts/Cup.cs" Line="1" Column="1" />
-      <File FileName="Assets/PortalManager.cs" Line="26" Column="79" />
-      <File FileName="Assets/Scripts/Portals/portalInManager.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/ui.cs" Line="128" Column="19" />
+      <File FileName="Assets/Scripts/Ball.cs" Line="88" Column="24" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="104" Column="1" />
+      <File FileName="Assets/Scripts/Cup.cs" />
+      <File FileName="Assets/Scripts/Portals/portalInManager.cs" />
       <File FileName="Assets/Scripts/Portals/portalOutManager.cs" Line="26" Column="69" />
+      <File FileName="Assets/Scripts/cupLevelManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/rail.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,9 +16,8 @@
           <Node name="TheBallAndTheBucket" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Portals" expanded="True">
-                  <Node name="portalOutManager.cs" selected="True" />
-                </Node>
+                <Node name="Portals" expanded="True" />
+                <Node name="rail.cs" selected="True" />
               </Node>
               <Node name="TextMesh Pro" expanded="True">
                 <Node name="Examples &amp; Extras" expanded="True">
@@ -32,7 +32,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8223dc07-24d3-4fb6-bc3e-a74c0ad41804" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="05e7d0c9-0b1a-4c27-8857-05e8e35a08a1" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

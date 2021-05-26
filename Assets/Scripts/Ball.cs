@@ -88,6 +88,7 @@ public class Ball : MonoBehaviour
 	private void Respawn()
     {
 		this.DesactivateRb();
+		this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
 		this.transform.position = this.spawn;
 		this.touchGround = true;
 	}
