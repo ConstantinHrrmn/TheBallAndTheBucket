@@ -20,6 +20,7 @@ TagManager:
   - star
   - cupLevel
   - cupHome
+  - audio
   layers:
   - Default
   - TransparentFX

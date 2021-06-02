@@ -51,8 +51,11 @@ public class ui : MonoBehaviour
     private int EndCode = 10002;
     private int TutorielCode = 10003;
 
+    private musicManager audio;
+    private EffectManager effect;
+
     #endregion
-    
+
 
     /// <summary>
     /// Ce produit une fois au moment du démarrage
@@ -80,6 +83,9 @@ public class ui : MonoBehaviour
 
         // Création d'un random
         this.rnd = new System.Random();
+
+        this.audio = GameObject.Find("MusicPlayer").GetComponent<musicManager>();
+        this.effect = GameObject.Find("EffectPlayer").GetComponent<EffectManager>();
     }
 
     /// <summary>
@@ -220,6 +226,9 @@ public class ui : MonoBehaviour
         this.inGame = !this.inGame;
         this.lblPause.gameObject.SetActive(!this.lblPause.gameObject.activeSelf);
         this.HomeBucket.gameObject.SetActive(!this.HomeBucket.gameObject.activeSelf);
+
+        this.audio.Pause();
+        this.effect.pause();
         
     }
 
@@ -252,8 +261,15 @@ public class ui : MonoBehaviour
         {
             this.ActivateGameLabels();
         }
+
         this.inGame = true;
         this.End = false;
+
+        if (!this.audio.isPlaying())
+        {
+            this.audio.invertPlays();
+            this.audio.StartGame();
+        }
     }
 
     /// <summary>

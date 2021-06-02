@@ -18,13 +18,20 @@ public class Ball : MonoBehaviour
 
 	public GameObject blood;
 
-	GameObject cup = null;
+	private EffectManager effect;
 
-	
+	GameObject cup = null;
 
 	void Awake ()
 	{
 		this.BaseColor = this.gameObject.GetComponent<SpriteRenderer>().color;
+
+		this.effect = GameObject.Find("EffectPlayer").GetComponent<EffectManager>();
+
+		//Debug.Log(audio);
+		//Debug.Log(effect);
+
+
 		rb = GetComponent<Rigidbody2D> ();
 		col = GetComponent<CircleCollider2D> ();
 		this.spawn = this.transform.position;
@@ -33,6 +40,8 @@ public class Ball : MonoBehaviour
 
 	public void Push (Vector2 force)
 	{
+		this.effect.ball();
+
 		rb.AddForce (force, ForceMode2D.Impulse);
 		this.AddTry();
 		this.ChangeColor(this.BaseColor);
@@ -75,7 +84,8 @@ public class Ball : MonoBehaviour
                 {
 					this.cup.GetComponent<cupLevelManager>().Choosen();
                 }
-				
+				this.effect.next();
+
 			}
         }
 
@@ -91,6 +101,8 @@ public class Ball : MonoBehaviour
 		this.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
 		this.transform.position = this.spawn;
 		this.touchGround = true;
+
+		
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -109,53 +121,72 @@ public class Ball : MonoBehaviour
 		if (s == "Respawn" || s == "Pic")
         {
 			Instantiate(blood, new Vector3(this.transform.position.x, this.transform.position.y, 0), new Quaternion());
+			this.effect.dead();
 			this.Respawn();
         }
 		else if (s == "cup")
         {
 			this.cup = null;
 			this.InCup = true;
+
+			this.effect.bucket();
         }
 		else if (s == "cupLevel")
         {
 			this.cup = collision.gameObject;
 			this.InCup = true;
-        }
+
+			this.effect.bucket();
+		}
 		else if (s == "cupHome")
 		{
 			this.Respawn();
 			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().GoBack();
+
+			this.effect.bucket();
 		}
 		else if (s == "speed")
         {
 			this.ChangeColor(c);
 			GameObject.Find("GameManager").GetComponent<GameManager>().SpeedUp();
+
+			this.effect.wall();
 		}
 		else if (s == "slow")
 		{
 			this.ChangeColor(c);
 			GameObject.Find("GameManager").GetComponent<GameManager>().SlowDown();
+
+			this.effect.wall();
 		}
 		else if (s == "rotation")
         {
 			this.ChangeColor(c);
 			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().ChangeRotation();
+
+			this.effect.wall();
 		}
 		else if (s == "gravity")
 		{
 			this.ChangeColor(c);
 			this.gameObject.GetComponent<Rigidbody2D>().gravityScale *= -1;
+
+			this.effect.wall();
 		}
 		else if (s == "cupgravity")
 		{
 			this.ChangeColor(c);
 			GameObject.FindGameObjectWithTag("cup").GetComponent<Rigidbody2D>().gravityScale *= -1;
+
+			this.effect.wall();
 		}
 		else if(s == "star")
         {
 			this.ChangeColor(c);
 			this.touchGround = true;
 			GameObject.Find("Deletable Walls").GetComponent<DeletableWallManager>().Activate();
+
+			this.effect.wall();
 		}
 		else if(s == "portal_in" || s == "portal_out")
         {
