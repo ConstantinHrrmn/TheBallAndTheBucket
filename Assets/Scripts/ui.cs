@@ -228,7 +228,12 @@ public class ui : MonoBehaviour
         this.HomeBucket.gameObject.SetActive(!this.HomeBucket.gameObject.activeSelf);
 
         this.audio.Pause();
-        this.effect.pause();
+
+        if (this.inGame)
+        {
+            this.effect.pause();
+        }
+        
         
     }
 
@@ -525,6 +530,8 @@ public class ui : MonoBehaviour
 
         this.Pause();
         this.NextLevel();
+
+        this.audio.MainMenu();
 
         try
         {

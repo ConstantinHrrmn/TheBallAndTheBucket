@@ -11,12 +11,23 @@ public class EffectManager : MonoBehaviour
     public AudioClip Pause;
     public AudioClip NextLevel;
 
-    private AudioSource audio;
+    private AudioSource audioBall;
+    private AudioSource audioWall;
+    private AudioSource audioBucket;
+    private AudioSource audioDead;
+    private AudioSource audioPause;
+    private AudioSource audioNextLevel;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.audio = this.gameObject.GetComponent<AudioSource>();
+        //this.audio = this.gameObject.GetComponent<AudioSource>();
+        this.audioBall = GameObject.Find("BallEffect").GetComponent<AudioSource>();
+        this.audioWall = GameObject.Find("WallEffect").GetComponent<AudioSource>();
+        this.audioBucket = GameObject.Find("BucketEffect").GetComponent<AudioSource>();
+        this.audioDead = GameObject.Find("DeadEffect").GetComponent<AudioSource>();
+        this.audioPause = GameObject.Find("PauseEffect").GetComponent<AudioSource>();
+        this.audioNextLevel = GameObject.Find("NextLevelEffect").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,31 +38,34 @@ public class EffectManager : MonoBehaviour
 
     public void ball()
     {
-        this.audio.PlayOneShot(this.Ball);
+        //this.audio.PlayOneShot(this.Ball);
+        this.audioBall.PlayOneShot(this.Ball);
     }
 
     public void wall()
     {
-        this.audio.PlayOneShot(this.Wall);
+        this.audioWall.PlayOneShot(this.Wall);
     }
 
     public void bucket()
     {
-        this.audio.PlayOneShot(this.Bucket);
+        this.audioBucket.PlayOneShot(this.Bucket);
     }
 
     public void dead()
     {
-        this.audio.PlayOneShot(this.Dead);
+       this.audioDead.PlayOneShot(this.Dead);
     }
 
     public void pause()
     {
-        this.audio.PlayOneShot(this.Pause);
+        //AudioSource AS = new AudioSource();
+        //AS.PlayOneShot(this.Pause);
+        this.audioPause.PlayOneShot(this.Pause);
     }
 
     public void next()
     {
-        this.audio.PlayOneShot(this.NextLevel);
+       this.audioNextLevel.PlayOneShot(this.NextLevel);
     }
 }

@@ -37,6 +37,13 @@ public class musicManager : MonoBehaviour
         audio.Play();
     }
 
+    public void MainMenu()
+    {
+        audio.Stop();
+        audio.clip = menuMusic;
+        audio.Play();
+    }
+
     public bool isPlaying()
     {
         return plays;

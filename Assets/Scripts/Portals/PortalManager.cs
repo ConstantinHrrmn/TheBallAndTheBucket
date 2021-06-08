@@ -11,6 +11,11 @@ public class PortalManager : MonoBehaviour
     private bool cooldown;
     private float coolDownTime;
 
+    public bool OUTup, OUTdown, OUTleft, OUTright;
+    public bool INup, INdown, INleft, INright;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +44,28 @@ public class PortalManager : MonoBehaviour
         if (!this.cooldown)
         {
             this.cooldown = true;
-            obj.gameObject.transform.position = this.PortalOut.transform.position;
+
+            Vector3 offset;
+            if (OUTup)
+            {
+                offset = new Vector3(0, 0.3f);
+            }
+            else if (OUTdown)
+            {
+                offset = new Vector3(0, -0.3f);
+            }
+            else if (OUTleft)
+            {
+                offset = new Vector3(-0.3f, 0);
+            }
+            else
+            {
+                offset = new Vector3(0, -0.3f);
+            }
+            
+
+
+            obj.gameObject.transform.position = this.PortalOut.transform.position + offset;
         }
         
     }
@@ -49,7 +75,30 @@ public class PortalManager : MonoBehaviour
         if (!this.cooldown)
         {
             this.cooldown = true;
-            obj.gameObject.transform.position = this.PortalIn.transform.position;
+
+            //Vector2 position = this.PortalOut.transform.position;
+            //position.x = position.x + 0.3f;
+
+            Vector3 offset;
+            if (INup)
+            {
+                offset = new Vector3(0, 0.3f);
+            }
+            else if (INdown)
+            {
+                offset = new Vector3(0, -0.3f);
+            }
+            else if (INleft)
+            {
+                offset = new Vector3(-0.3f, 0);
+            }
+            else
+            {
+                offset = new Vector3(0, -0.3f);
+            }
+
+
+            obj.gameObject.transform.position = this.PortalIn.transform.position + offset;
         }
         
     }
