@@ -65,4 +65,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutoriels/tutorial5.unity
     guid: 644d69445868aed47baf5aa9764d9e9d
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/MultiplayerMenu.unity
+    guid: ac602bdd50b9e0645bdcebefd49e3a81
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/Lobby.unity
+    guid: c6f2b817eeff9d741acf94e3fe866631
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi1.unity
+    guid: ae91197670d66d84e9a3bf5a2693c3b2
   m_configObjects: {}

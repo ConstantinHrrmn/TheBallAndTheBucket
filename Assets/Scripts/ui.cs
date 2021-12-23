@@ -50,6 +50,7 @@ public class ui : MonoBehaviour
     private int LevelSelectorCode = 10001;
     private int EndCode = 10002;
     private int TutorielCode = 10003;
+    private int MultiplayerCode = 10004;
 
     private musicManager audio;
     private EffectManager effect;
@@ -80,6 +81,7 @@ public class ui : MonoBehaviour
         this.SpecialCodes.Add(this.LevelSelectorCode, "levelSelector");
         this.SpecialCodes.Add(this.EndCode, "End");
         this.SpecialCodes.Add(this.TutorielCode, "Tutoriel");
+        this.SpecialCodes.Add(this.MultiplayerCode, "Multi");
 
         // Création d'un random
         this.rnd = new System.Random();
@@ -435,6 +437,11 @@ public class ui : MonoBehaviour
                 this.TutorielLevels();
                 break;
 
+            case 6:
+                Debug.LogWarning("Multiplayer");
+                this.LoadMultiplayer();
+                break;
+
             default:
                 break;
         }
@@ -521,6 +528,11 @@ public class ui : MonoBehaviour
         this.inTutorial = true;
         this.ResetValues();
         this.NextLevel();
+    }
+
+    public void LoadMultiplayer()
+    {
+        SceneManager.LoadScene("MultiplayerMenu");
     }
 
     public void GoBack()
