@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class multimanager : MonoBehaviour
@@ -72,6 +73,22 @@ public class multimanager : MonoBehaviour
 
     private void OnJoinedRoom()
     {
+        /*ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
+
+        Color color = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+
+        customProperties["color"] = ColorUtility.ToHtmlStringRGB(color);
+        customProperties["cl"] = new Vector3(color.r, color.g, color.b);
+
+        PhotonNetwork.player.SetCustomProperties(customProperties);
+
+        Debug.Log(PhotonNetwork.player.NickName + " : " + PhotonNetwork.player.CustomProperties["cl"]);*/
+
         PhotonNetwork.LoadLevel("Lobby");
+    }
+
+    public void LeaveRoom()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

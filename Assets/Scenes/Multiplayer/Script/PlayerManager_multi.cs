@@ -13,6 +13,7 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 	[SerializeField] float basePushForce = 4f;
 	[SerializeField] float pushForce = 4f;
 
+
 	public PhotonView photonView;
 	public Text PlayerName;
 
@@ -24,26 +25,89 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 	Vector2 force;
 	float distance;
 
+	private PlayerData pd;
+	private int animate = 0;
+
 	//---------------------------------------
 	void Start()
 	{
 		cam = Camera.main;
 
 		this.trajectory = this.gameObject.transform.Find("Trajectory").GetComponent<Trajectory>();
-
 		ball.DesactivateRb();
 
+        if (photonView.isMine)
+        {
+			// Setting player data
+			this.pd = this.gameObject.GetComponent<PlayerData>();
 
+			this.pd.SetColor();
+
+			this.gameObject.GetComponent<SpriteRenderer>().color = this.pd.color;
+
+			this.pd.NewLevel();
+
+			this.ball.ChangeBaseColor(this.pd.color);
+
+			this.PlayerName.text = PhotonNetwork.player.NickName;
+
+		}
+        else
+        {
+			this.PlayerName.text = photonView.owner.NickName;
+		}
+		
+		//this.photonView.RPC("RPC_SendColor", PhotonTargets.AllBuffered);
 	}
 
 	void Update()
 	{
+		//Vector3 color = new Vector3(this.pd.color.r, this.pd.color.g, this.pd.color.b);
+		//this.photonView.RPC("RPC_SendColor", PhotonTargets.AllBuffered, color);
 
-        if (photonView.isMine)
+		if (photonView.isMine)
         {
+			
+
+			this.pd.InstantiatePlayerList();
 			this.CheckInput();
-        }
+
+            if (this.ball.waiting)
+            {
+				this.pd.FinishedLevel();
+				//this.ball.col.enabled = false;
+				//this.ball.DesactivateRb();
+				this.TurnOff();
+				if (this.animate == 0)
+					this.animate = 1;
+            }
+
+            if (this.animate == 1 && cam.transform.position.y > -8)
+            {
+				cam.transform.Translate(new Vector3(0, -2, 0) * Time.deltaTime);
+            }
+
+
+		}
+
+		
 	}
+
+	private void TurnOff()
+    {
+
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+			Destroy(this.gameObject.transform.GetChild(i).gameObject);
+		}
+
+		Destroy(this.gameObject.GetComponent<SpriteRenderer>());
+		Destroy(this.gameObject.GetComponent<SpriteRenderer>());
+		Destroy(this.gameObject.GetComponent<Rigidbody2D>());
+
+		this.transform.position = new Vector3(-1000, -1000, 0);
+		
+    }
 
 	private void CheckInput()
     {
@@ -106,6 +170,8 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 
 		ball.Push(force);
 
+		this.pd.DidAShot();
+
 		trajectory.Hide();
 	}
 
@@ -118,4 +184,11 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 	{
 		this.pushForce = 1f;
 	}
+
+	[PunRPC]
+	private void RPC_SendColor()
+	{
+		this.gameObject.GetComponent<SpriteRenderer>().color = this.pd.color;
+	}
+
 }

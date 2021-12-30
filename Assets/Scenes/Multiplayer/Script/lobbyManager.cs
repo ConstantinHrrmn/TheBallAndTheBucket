@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class lobbyManager : Photon.MonoBehaviour
@@ -30,7 +32,11 @@ public class lobbyManager : Photon.MonoBehaviour
     void Update()
     {
         string str = "";
-        foreach (var item in PhotonNetwork.playerList)
+
+        PhotonPlayer[] players = PhotonNetwork.playerList;
+        Array.Sort(players);
+
+        foreach (PhotonPlayer item in players)
         {
             str += item.NickName + "\n";
         }
@@ -41,5 +47,11 @@ public class lobbyManager : Photon.MonoBehaviour
     public void StartGame()
     {
         PhotonNetwork.LoadLevel("multi1");
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("MultiplayerMenu");
     }
 }

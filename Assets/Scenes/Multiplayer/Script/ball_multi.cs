@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ball_multi : MonoBehaviour
+public class ball_multi : Photon.MonoBehaviour
 {
 
 	[HideInInspector] public Rigidbody2D rb;
@@ -12,10 +14,15 @@ public class ball_multi : MonoBehaviour
 
 	[HideInInspector] public bool touchGround = true;
 
+
+
 	private Vector3 spawn;
 	private float timer = 0.0f;
 	private bool InCup = false;
+	public bool waiting = false;
 	private Color BaseColor;
+
+
 
 	public GameObject blood;
 
@@ -25,13 +32,7 @@ public class ball_multi : MonoBehaviour
 
 	void Awake()
 	{
-		this.BaseColor = this.gameObject.GetComponent<SpriteRenderer>().color;
-
 		this.effect = GameObject.Find("EffectPlayer").GetComponent<EffectManager>();
-
-		//Debug.Log(audio);
-		//Debug.Log(effect);
-
 
 		rb = GetComponent<Rigidbody2D>();
 		col = GetComponent<CircleCollider2D>();
@@ -41,6 +42,8 @@ public class ball_multi : MonoBehaviour
 
 	public void Push(Vector2 force)
 	{
+		
+
 		this.effect.ball();
 
 		rb.AddForce(force, ForceMode2D.Impulse);
@@ -48,6 +51,12 @@ public class ball_multi : MonoBehaviour
 		this.ChangeColor(this.BaseColor);
 
 	}
+
+
+	public void ChangeBaseColor(Color c)
+    {
+		this.BaseColor = c;
+    }
 
 	public void AddTry()
 	{
@@ -71,24 +80,25 @@ public class ball_multi : MonoBehaviour
 
 	private void Update()
 	{
-		if (this.InCup)
-		{
-
-			this.timer += Time.deltaTime;
-			if (this.timer >= 2)
+        if (!waiting)
+        {
+			if (this.InCup)
 			{
-				if (this.cup == null)
-				{
-					//GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().NextLevel();
-				}
-				else
-				{
-					//this.cup.GetComponent<cupLevelManager>().Choosen();
-				}
-				this.effect.next();
 
+				this.timer += Time.deltaTime;
+				if (this.timer >= 2)
+				{
+					if (this.cup == null)
+					{
+						this.waiting = true;
+					}
+
+				}
 			}
 		}
+
+		
+
 
 		if (Input.GetKeyDown(KeyCode.R))
 		{
@@ -134,6 +144,7 @@ public class ball_multi : MonoBehaviour
 
 			this.effect.bucket();
 		}
+		/*
 		else if (s == "cupLevel")
 		{
 			this.cup = collision.gameObject;
@@ -195,6 +206,7 @@ public class ball_multi : MonoBehaviour
 		{
 			this.ChangeColor(c);
 		}
+		*/
 		else
 		{
 			this.touchGround = true;
@@ -216,4 +228,6 @@ public class ball_multi : MonoBehaviour
 	{
 		this.gameObject.GetComponent<SpriteRenderer>().color = c;
 	}
+
+
 }
