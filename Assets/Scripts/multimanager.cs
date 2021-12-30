@@ -23,6 +23,7 @@ public class multimanager : MonoBehaviour
     void Start()
     {
         Destroy(GameObject.Find("GameUI"));
+        PhotonNetwork.automaticallySyncScene = true;
     }
 
     // Update is called once per frame
@@ -65,7 +66,7 @@ public class multimanager : MonoBehaviour
         Debug.Log("Joining a game");
 
         RoomOptions options = new RoomOptions();
-        options.maxPlayers = 5;
+        options.MaxPlayers = 5;
         PhotonNetwork.JoinOrCreateRoom(CodeInput.text, options, TypedLobby.Default);
     }
 

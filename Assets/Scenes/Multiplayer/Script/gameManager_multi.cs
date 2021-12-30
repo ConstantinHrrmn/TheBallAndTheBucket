@@ -8,7 +8,7 @@ public class gameManager_multi : Photon.MonoBehaviour
 
     private void Start()
     {
-        this.SpawnPlayer();
+        //this.SpawnPlayer();
     }
 
     public void SpawnPlayer()
@@ -16,6 +16,14 @@ public class gameManager_multi : Photon.MonoBehaviour
         float x = -8;
         float y = -3;
 
+        this.HideCanvas(false);
+
         PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector2(x, y), Quaternion.identity, 0);
+    }
+
+    public void HideCanvas(bool hideornot)
+    {
+        GameObject can = GameObject.Find("Canvas");
+        can.SetActive(hideornot);
     }
 }

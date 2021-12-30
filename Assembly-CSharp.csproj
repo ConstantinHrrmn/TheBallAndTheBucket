@@ -132,6 +132,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
     <Compile Include="Assets\Scripts\DeletableWallManager.cs" />
+    <Compile Include="Assets\Scenes\Multiplayer\Script\ball_multi.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoHub\MoveCam.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStreamQueue.cs" />
+    <Compile Include="Assets\Scenes\Multiplayer\Script\PlayerManager_multi.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -234,6 +236,7 @@
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoChangeOwner\ShowInfoOfPlayer.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoMecanim\Scripts\DemoMecanimGUI.cs" />
+    <Compile Include="Assets\Scenes\Multiplayer\Script\gameManager_multi.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoChangeOwner\MaterialPerOwner.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatPeer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
@@ -250,9 +253,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\CameraWork.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
-    <Compile Include="Assets\Scenes\Multiplayer\Script\PlayerManager_multi.cs" />
-    <Compile Include="Assets\Scenes\Multiplayer\Script\gameManager_multi.cs" />
-    <Compile Include="Assets\Scenes\Multiplayer\Script\ball_multi.cs" />
+    <Compile Include="Assets\Scenes\Multiplayer\Script\PlayerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

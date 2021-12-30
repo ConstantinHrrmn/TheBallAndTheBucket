@@ -92,7 +92,7 @@ public class ball_multi : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().ReloadLevel();
+			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().ReloadLevel(); 
 		}
 	}
 
