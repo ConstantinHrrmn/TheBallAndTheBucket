@@ -92,6 +92,20 @@ public class PlayerData : Photon.MonoBehaviour
         //this.SaveChanges();
     }
 
+    public void updateShot()
+    {
+        try
+        {
+            int score = PhotonNetwork.player.GetScore();
+            this.txtShots.text = "Shots : " + score.ToString();
+        }
+        catch (Exception)
+        {
+            Debug.Log("no shots");
+        }
+        
+    }
+
     public void FinishedLevel()
     {
         //Debug.LogWarning("F1 --> " + PhotonNetwork.player.CustomProperties["done"]);

@@ -51,6 +51,7 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 
 			this.PlayerName.text = PhotonNetwork.player.NickName;
 
+			this.pd.updateShot();
 		}
         else
         {
@@ -70,7 +71,7 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 			
 
 			this.pd.InstantiatePlayerList();
-			this.CheckInput();
+			
 
             if (this.ball.waiting)
             {
@@ -81,6 +82,10 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 				if (this.animate == 0)
 					this.animate = 1;
             }
+            else
+            {
+				this.CheckInput();
+			}
 
             if (this.animate == 1 && cam.transform.position.y > -8)
             {

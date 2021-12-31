@@ -16,11 +16,11 @@ public class lobbyManager : Photon.MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PhotonNetwork.playerList.Length);
+        //Debug.Log(PhotonNetwork.playerList.Length);
         string roomname = PhotonNetwork.room.Name;
         this.lblRoomCode.text = "Room code : " + roomname;
 
-        Debug.Log(PhotonNetwork.isMasterClient);
+        //Debug.Log(PhotonNetwork.isMasterClient);
 
         if (PhotonNetwork.isMasterClient)
         {
@@ -46,6 +46,7 @@ public class lobbyManager : Photon.MonoBehaviour
 
     public void StartGame()
     {
+        PhotonNetwork.room.IsOpen = false;
         PhotonNetwork.LoadLevel("multi1");
     }
 
