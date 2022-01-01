@@ -10,6 +10,8 @@ public class endGameScript : MonoBehaviour
 
     public Text txtClassement;
     public GameObject btnRestart;
+    private ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +59,7 @@ public class endGameScript : MonoBehaviour
     public void StartOver()
     {
         this.ResetAllPlayers();
-        PhotonNetwork.LoadLevel("multi1");
+        PhotonNetwork.LoadLevel("Lobby");
     }
 
     public void ResetAllPlayers()
