@@ -25,6 +25,10 @@ public class lobbyManager : Photon.MonoBehaviour
         string roomname = PhotonNetwork.room.Name;
         this.lblRoomCode.text = "Room code : " + roomname;
 
+        PhotonNetwork.player.SetScore(0);
+
+        Debug.Log("Score of player : " + PhotonNetwork.player.GetScore());
+
         //Debug.Log(PhotonNetwork.isMasterClient);
 
         if (PhotonNetwork.isMasterClient)

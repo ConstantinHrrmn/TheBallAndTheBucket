@@ -44,6 +44,7 @@ public class gameManager_multi : Photon.MonoBehaviour
 
     public void LeaveRoom()
     {
+        PhotonNetwork.player.SetScore(0);
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("MainMenu");
     }
