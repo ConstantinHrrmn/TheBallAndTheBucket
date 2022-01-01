@@ -13,7 +13,6 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 	[SerializeField] float basePushForce = 4f;
 	[SerializeField] float pushForce = 4f;
 
-
 	public PhotonView photonView;
 	public Text PlayerName;
 
@@ -28,7 +27,6 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 	private PlayerData pd;
 	private int animate = 0;
 
-	//---------------------------------------
 	void Start()
 	{
 		cam = Camera.main;
@@ -38,7 +36,6 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 
         if (photonView.isMine)
         {
-			// Setting player data
 			this.pd = this.gameObject.GetComponent<PlayerData>();
 
 			this.pd.SetColor();
@@ -57,27 +54,18 @@ public class PlayerManager_multi : Photon.MonoBehaviour
         {
 			this.PlayerName.text = photonView.owner.NickName;
 		}
-		
-		//this.photonView.RPC("RPC_SendColor", PhotonTargets.AllBuffered);
 	}
 
 	void Update()
 	{
-		//Vector3 color = new Vector3(this.pd.color.r, this.pd.color.g, this.pd.color.b);
-		//this.photonView.RPC("RPC_SendColor", PhotonTargets.AllBuffered, color);
-
 		if (photonView.isMine)
         {
 			
-
 			this.pd.InstantiatePlayerList();
 			
-
             if (this.ball.waiting)
             {
 				this.pd.FinishedLevel();
-				//this.ball.col.enabled = false;
-				//this.ball.DesactivateRb();
 				this.TurnOff();
 				if (this.animate == 0)
 					this.animate = 1;
@@ -91,16 +79,11 @@ public class PlayerManager_multi : Photon.MonoBehaviour
             {
 				cam.transform.Translate(new Vector3(0, -2, 0) * (Time.deltaTime * 3));
             }
-
-
 		}
-
-		
 	}
 
 	private void TurnOff()
     {
-
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
 			Destroy(this.gameObject.transform.GetChild(i).gameObject);
@@ -116,7 +99,6 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 
 	private void CheckInput()
     {
-		//Debug.Log(this.ball.gameObject.GetComponent<Ball>().touchGround);
 		if (this.GetComponent<ball_multi>().touchGround)
 		{
 			if (Input.GetMouseButtonDown(0))
@@ -129,32 +111,25 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 				isDragging = false;
 				OnDragEnd();
 				this.GetComponent<ball_multi>().touchGround = false;
-
 			}
 
 			if (isDragging)
-			{
-
 				OnDrag();
-
-			}
 		}
-	}
-
-	//-Drag--------------------------------------
-	void OnDragStart()
-	{
-		ball.DesactivateRb();
-		startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-
-		trajectory.Show();
 	}
 
 	public void NewLevel()
 	{
 		this.cam = Camera.main;
-
 	}
+
+	void OnDragStart()
+	{
+		ball.DesactivateRb();
+		startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+		trajectory.Show();
+	}
+
 
 	void OnDrag()
 	{
@@ -168,7 +143,6 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 
 	void OnDragEnd()
 	{
-
 		this.pushForce = this.basePushForce;
 
 		ball.ActivateRb();
@@ -189,11 +163,4 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 	{
 		this.pushForce = 1f;
 	}
-
-	[PunRPC]
-	private void RPC_SendColor()
-	{
-		this.gameObject.GetComponent<SpriteRenderer>().color = this.pd.color;
-	}
-
 }

@@ -13,6 +13,11 @@ public class gameManager_multi : Photon.MonoBehaviour
 
     public GameObject WaitingCanvas;
 
+    private void Start()
+    {
+        this.customProperties["done"] = 0;
+        PhotonNetwork.player.SetCustomProperties(this.customProperties);
+    }
 
     private void Update()
     {

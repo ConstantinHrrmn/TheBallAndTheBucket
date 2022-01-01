@@ -153,6 +153,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
     <Compile Include="Assets\Scripts\musicManager.cs" />
+    <Compile Include="Assets\Scenes\Multiplayer\Script\endGameScript.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\AudioRpc.cs" />
     <Compile Include="Assets\Scenes\Multiplayer\Script\canvasRotation.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
@@ -257,7 +258,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\PunBasics-Tutorial\Scripts\CameraWork.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
-    <Compile Include="Assets\Scenes\Multiplayer\Script\endGameScript.cs" />
+    <Compile Include="Assets\Scenes\Multiplayer\Script\timerManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

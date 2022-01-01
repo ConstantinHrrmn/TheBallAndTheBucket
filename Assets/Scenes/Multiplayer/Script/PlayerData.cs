@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ public class PlayerData : Photon.MonoBehaviour
         this.f = GameObject.Find("txtFinished").GetComponent<Text>();
         this.w = GameObject.Find("txtWaiting").GetComponent<Text>();
 
-        this.NewLevel();
+        //this.NewLevel();
     }
 
     public void WaitingFor()
