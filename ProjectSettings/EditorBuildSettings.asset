@@ -81,6 +81,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Multiplayer/levels/multi3.unity
     guid: 7f4afec68da321647a649fe7cc08dfe1
   - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi4.unity
+    guid: 5a58f03f847a13c4e8f5bc0392c3378c
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi5.unity
+    guid: 6d25b73a5de48664e9e044a3711adb3b
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi6.unity
+    guid: 03d1812a2e5e3104a962980a556696b7
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi7.unity
+    guid: ce8fcbcac560e7f4f98f191080f7b819
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi8.unity
+    guid: 5f78aab6ea28034409e180ce8a320bce
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi9.unity
+    guid: 6d27b0616c83bba4b9faf222ded1438b
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer/levels/multi10.unity
+    guid: 709603950d737dd49942db34f691e85d
+  - enabled: 1
     path: Assets/Scenes/Multiplayer/EndGame.unity
     guid: 95ff63260f336e04696ceab2494f82e1
   m_configObjects: {}

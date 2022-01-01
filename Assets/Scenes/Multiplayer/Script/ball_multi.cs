@@ -86,7 +86,7 @@ public class ball_multi : Photon.MonoBehaviour
 			{
 
 				this.timer += Time.deltaTime;
-				if (this.timer >= 2)
+				if (this.timer >= 1)
 				{
 					if (this.cup == null)
 					{
@@ -158,7 +158,7 @@ public class ball_multi : Photon.MonoBehaviour
 			GameObject.FindGameObjectWithTag("ui").GetComponent<ui>().GoBack();
 
 			this.effect.bucket();
-		}
+		}*/
 		else if (s == "speed")
 		{
 			this.ChangeColor(c);
@@ -173,6 +173,7 @@ public class ball_multi : Photon.MonoBehaviour
 
 			this.effect.wall();
 		}
+		/*
 		else if (s == "rotation")
 		{
 			this.ChangeColor(c);
@@ -180,6 +181,7 @@ public class ball_multi : Photon.MonoBehaviour
 
 			this.effect.wall();
 		}
+		*/
 		else if (s == "gravity")
 		{
 			this.ChangeColor(c);
@@ -196,7 +198,7 @@ public class ball_multi : Photon.MonoBehaviour
 		}
 		else if (s == "star")
 		{
-			this.ChangeColor(c);
+			//this.ChangeColor(c);
 			this.touchGround = true;
 			GameObject.Find("Deletable Walls").GetComponent<DeletableWallManager>().Activate();
 
@@ -206,7 +208,6 @@ public class ball_multi : Photon.MonoBehaviour
 		{
 			this.ChangeColor(c);
 		}
-		*/
 		else
 		{
 			this.touchGround = true;

@@ -1176,6 +1176,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3975450765651986495, guid: 297b680b902244143a95fe1a6abb1c03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975450765651986495, guid: 297b680b902244143a95fe1a6abb1c03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975450767169155877, guid: 297b680b902244143a95fe1a6abb1c03,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975450767169155877, guid: 297b680b902244143a95fe1a6abb1c03,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.43
+      objectReference: {fileID: 0}
     - target: {fileID: 4004098461289232174, guid: 297b680b902244143a95fe1a6abb1c03,
         type: 3}
       propertyPath: m_RootOrder
@@ -1747,7 +1767,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnNext: {fileID: 1156419148}
   hostdisconnected: {fileID: 1098773557}
-  levelName: EndGame
 --- !u!1 &834714096
 GameObject:
   m_ObjectHideFlags: 0

@@ -73,6 +73,7 @@ public class DeletableWallManager : MonoBehaviour
     public void Activate()
     {
         this.activated = true;
+        Debug.LogWarning("ACTIVATED");
     }
 
     public void Reset()

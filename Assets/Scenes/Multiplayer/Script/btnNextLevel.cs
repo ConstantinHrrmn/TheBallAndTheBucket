@@ -9,7 +9,11 @@ public class btnNextLevel : MonoBehaviour
 
     public GameObject hostdisconnected;
 
-    public string levelName;
+    //public string levelName;
+
+    bool isEnd;
+
+    private ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +21,12 @@ public class btnNextLevel : MonoBehaviour
         if (PhotonNetwork.isMasterClient)
         {
             btnNext.SetActive(true);
+            this.customProperties = PhotonNetwork.room.CustomProperties;
+            this.customProperties["actualLevel"] = (int)this.customProperties["actualLevel"] + 1;
+
+            Debug.Log("Actual : " + this.customProperties["actualLevel"] + " | Max : " + this.customProperties["levels"]);
+
+            this.isEnd = (int)this.customProperties["levels"] == (int)this.customProperties["actualLevel"];
         }
     }
 
@@ -39,6 +49,14 @@ public class btnNextLevel : MonoBehaviour
             }
         }
 
-        PhotonNetwork.LoadLevel(levelName);
+        if (this.isEnd)
+        {
+            PhotonNetwork.LoadLevel("EndGame");
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel("multi"+ ((int)this.customProperties["actualLevel"] + 1).ToString());
+        }
+        
     }
 }

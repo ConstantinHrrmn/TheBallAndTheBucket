@@ -89,7 +89,7 @@ public class PlayerManager_multi : Photon.MonoBehaviour
 
             if (this.animate == 1 && cam.transform.position.y > -8)
             {
-				cam.transform.Translate(new Vector3(0, -2, 0) * Time.deltaTime);
+				cam.transform.Translate(new Vector3(0, -2, 0) * (Time.deltaTime * 3));
             }
 
 
